@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using GILES;
 using System.IO;
+using SMNetwork;
+using SMNetwork.Client;
+using System;
 
 namespace GILES.Interface
 {
@@ -21,7 +24,7 @@ namespace GILES.Interface
 		public GameObject scrollContent;
 
 		/// Save and cancel buttons.  `onClick` delegates will automatically be added by this script.
-		public Button saveButton, cancelButton;
+		public Button saveButton, cancelButton, uploadButton;
 
 		/// The input field that shows the directory path.
 		public InputField directoryCrumbsField;
@@ -46,6 +49,8 @@ namespace GILES.Interface
 		public bool isFileBrowser { get { return _isFileBrowser; } set { _isFileBrowser = value; UpdateDirectoryContents(); } }
 
 		private bool _isFileBrowser = false;
+
+        public Client smClient;
 
 		/// If `isFileBrowser` is true, this string my be used to filter file results (see https://msdn.microsoft.com/en-us/library/wz42302f(v=vs.110).aspx).
 		public string filePattern { get { return _filePattern; } set { _filePattern = value; UpdateDirectoryContents(); } }
@@ -105,8 +110,19 @@ namespace GILES.Interface
 			cancelButton.onClick.AddListener( Cancel );
 			saveButton.onClick.AddListener( Save );
 
+            uploadButton.onClick.AddListener(Upload);
+
 			UpdateNavButtonInteractibility();
-		}
+
+            try
+            {
+                smClient = new Client();
+            }
+            catch(Exception)
+            {
+            }
+
+        }
 
 		/**
 		 * Set the currently displayed directory.
@@ -267,10 +283,27 @@ namespace GILES.Interface
 			pb_ModalWindow.Hide();
 		}
 
-		/**
+        public void Upload()
+        {
+            string name = "";
+            var data = GetFilePath().Split('.');
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                var e = data[i];
+                name += e;
+            }
+            try
+            {
+                smClient.SendMap(name, pb_FileUtility.Zip(pb_Scene.SaveLevel()));
+            }
+            catch(Exception)
+            { }
+        }
+
+        /**
 		 * Read the current string in the file input field and make it an actual path (minus directory).
 		 */
-		private string GetFilePath()
+        private string GetFilePath()
 		{
 			string path = fileInputField.text;
 			return path;

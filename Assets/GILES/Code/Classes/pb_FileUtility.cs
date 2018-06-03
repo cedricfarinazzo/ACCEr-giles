@@ -27,22 +27,22 @@ namespace GILES
 				return "";
 			}
 
-            string contents = Unzip(File.ReadAllBytes(p));
+            string contents = File.ReadAllText(p);
 
 			return contents;
 		}
 
-		/**
+        /**
 		 * Save some text to a file path.  Does not check that folder structure is valid!
 		 */
-		public static bool SaveFile(string path, string contents)
+        public static bool SaveFile(string path, string contents)
 		{
 			try
 			{
                 string p = Path.GetFullPath(path);
                 p = p.Replace(" ", "\\ ");
                 p = p.Replace("%20", " ");
-                File.WriteAllBytes(p, Zip(contents));
+                File.WriteAllText(p, contents);
 			} 
 			catch(System.Exception e)
 			{
@@ -65,7 +65,7 @@ namespace GILES
             }
         }
 
-        public static byte[] Zip(string str)
+        public static string Zip(string str)
         {
             var bytes = Encoding.UTF8.GetBytes(str);
 
@@ -77,14 +77,13 @@ namespace GILES
                     //msi.CopyTo(gs);
                     CopyTo(msi, gs);
                 }
-
-                return mso.ToArray();
+                return Encoding.UTF8.GetString(mso.ToArray());
             }
         }
 
-        public static string Unzip(byte[] bytes)
+        public static string Unzip(string bytes)
         {
-            using (var msi = new MemoryStream(bytes))
+            using (var msi = new MemoryStream(Encoding.UTF8.GetBytes(bytes)))
             using (var mso = new MemoryStream())
             {
                 using (var gs = new GZipStream(msi, CompressionMode.Decompress))

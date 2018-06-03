@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: b5d8871f09c6c624dbf9424097c94e0a,
+    type: 2}
   m_UseShadowmask: 0
 --- !u!196 &5
 NavMeshSettings:
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfef9b0d67ba7a7449416de683d9be6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Main Menu
+  scene: menu
 --- !u!114 &11419693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,27 +648,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.11395669
+      value: 3.1139567
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.43686628
+      value: -3.4368663
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.259401977
+      value: -0.25940198
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .361510843
+      value: 0.36151084
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.105446793
+      value: -0.10544679
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.889326453
+      value: -0.88932645
       objectReference: {fileID: 0}
     - target: {fileID: 482858, guid: 5bcc1c0ef8a4d524db81b6553c596791, type: 2}
       propertyPath: m_RootOrder
@@ -860,6 +861,10 @@ Prefab:
     - target: {fileID: 22418450, guid: 48e80190691224640a21e8eb2f307690, type: 2}
       propertyPath: m_AnchoredPosition.y
       value: -0.000017166138
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430646, guid: 48e80190691224640a21e8eb2f307690, type: 2}
+      propertyPath: m_Value
+      value: 0.18367347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48e80190691224640a21e8eb2f307690, type: 2}
@@ -1176,6 +1181,7 @@ GameObject:
   - component: {fileID: 519321230}
   - component: {fileID: 519321229}
   - component: {fileID: 519321228}
+  - component: {fileID: 519321231}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1262,6 +1268,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &519321231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519321226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d914759cfcca04aa49a5bff443a1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &611094620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4685,6 +4702,14 @@ Prefab:
     - target: {fileID: 22477226, guid: ecddc44b8f1ec4c4abb9fe7c49588c05, type: 2}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22438758, guid: ecddc44b8f1ec4c4abb9fe7c49588c05, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000018298626
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427934, guid: ecddc44b8f1ec4c4abb9fe7c49588c05, type: 2}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecddc44b8f1ec4c4abb9fe7c49588c05, type: 2}
