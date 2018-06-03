@@ -117,8 +117,12 @@ namespace GILES.Interface
             try
             {
                 smClient = new Client();
+                SMNetwork.Client.DataClient.Email = SaveData.SaveData.GetString("DataClient.Email");
+                SMNetwork.Client.DataClient.Token = SaveData.SaveData.GetString("DataClient.Token");
+                SMNetwork.Client.DataClient.User = SaveData.SaveData.GetObject<SMNetwork.DataUser>("DataClient.User");
+
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
 
@@ -285,19 +289,10 @@ namespace GILES.Interface
 
         public void Upload()
         {
-            string name = "";
-            var data = GetFilePath().Split('.');
-            for (int i = 0; i < data.Length - 1; i++)
-            {
-                var e = data[i];
-                name += e;
-            }
-            try
-            {
-                smClient.SendMap(name, pb_FileUtility.Zip(pb_Scene.SaveLevel()));
-            }
-            catch(Exception)
-            { }
+            Debug.Log("UPLOAD");
+            string name = GetFilePath();
+            smClient.SendMap(name, pb_Scene.SaveLevel());
+            
         }
 
         /**

@@ -14,6 +14,13 @@ public class pb_Network : MonoBehaviour {
         try
         {
             smClient = new Client();
+            SMNetwork.Client.DataClient.Email = SaveData.SaveData.GetString("DataClient.Email");
+            SMNetwork.Client.DataClient.Token = SaveData.SaveData.GetString("DataClient.Token");
+            SMNetwork.Client.DataClient.User = SaveData.SaveData.GetObject<SMNetwork.DataUser>("DataClient.User");
+            if (smClient.AskMyProfil() == null)
+            {
+                SceneManager.LoadScene("connexion");
+            }
         }
         catch (UnityException)
         {
@@ -25,13 +32,6 @@ public class pb_Network : MonoBehaviour {
             Debug.Log("Failed to join server");
             SceneManager.LoadScene("failedNetwork");
 
-        }
-        SMNetwork.Client.DataClient.Email = SaveData.SaveData.GetString("DataClient.Email");
-        SMNetwork.Client.DataClient.Token = SaveData.SaveData.GetString("DataClient.Token");
-        SMNetwork.Client.DataClient.User = SaveData.SaveData.GetObject<SMNetwork.DataUser>("DataClient.User");
-        if (smClient.AskMyProfil() == null)
-        {
-            SceneManager.LoadScene("connexion");
         }
     }
 }
