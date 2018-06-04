@@ -110,7 +110,11 @@ namespace GILES.Interface
 			cancelButton.onClick.AddListener( Cancel );
 			saveButton.onClick.AddListener( Save );
 
-            uploadButton.onClick.AddListener(Upload);
+            if (uploadButton != null)
+            {
+                uploadButton.onClick.AddListener(Upload);
+            }
+            
 
 			UpdateNavButtonInteractibility();
 

@@ -45,5 +45,11 @@ namespace GILES.Example
 			if( SceneManager.GetActiveScene().name == sceneToLoadLevelInto && !string.IsNullOrEmpty(json))
 				pb_Scene.LoadLevel(json);
 		}
+
+        public static void LoadSceneModeFromJson(string json)
+        {
+            instance.json = json;
+            SceneManager.LoadScene(instance.sceneToLoadLevelInto);
+        }
 	}
 }
