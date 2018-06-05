@@ -293,10 +293,18 @@ namespace GILES.Interface
 
         public void Upload()
         {
-            Debug.Log("UPLOAD");
-            string name = GetFilePath();
-            smClient.SendMap(name, pb_Scene.SaveLevel());
-            pb_ModalWindow.Hide();
+            try
+            {
+                Debug.Log("UPLOAD");
+                string name = GetFilePath();
+                smClient.SendMap(name, pb_Scene.SaveLevel());
+                pb_ModalWindow.Hide();
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         /**
